@@ -177,8 +177,6 @@ entryPoint = \"https\"
     delayBeforeCheck = ${TRAEFIK_ACME_DNS_DELAY}
   [[acme.domains]]
     main = \"*.${TRAEFIK_ACME_DCOS_DOMAIN}\"
-  [[acme.domains]]
-    main = \"${TRAEFIK_ACME_DCOS_DOMAIN}\"
 "
 fi
 
