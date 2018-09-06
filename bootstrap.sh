@@ -58,6 +58,7 @@ function generate_config {
   TRAEFIK_ACME_CASERVER=${TRAEFIK_ACME_CASERVER:-"https://acme-v01.api.letsencrypt.org/directory"}
   TRAEFIK_ACME_DCOS_DOMAIN=$TRAEFIK_DCOS_CLUSTER_NAME.$TRAEFIK_CONSUL_DOMAIN
   TRAEFIK_ACME_DNS_PROVIDER=${TRAEFIK_ACME_DNS_PROVIDER:-"-"}
+  TRAEFIK_ACME_DNS_DELAY=${TRAEFIK_ACME_DNS_DELAY:-"0"}
   TRAEFIK_K8S_ENABLE=${TRAEFIK_K8S_ENABLE:-"false"}
   TRAEFIK_K8S_OPTS=${TRAEFIK_K8S_OPTS:-""}
   TRAEFIK_PROMETHEUS_ENABLE=${TRAEFIK_PROMETHEUS_ENABLE:-"false"}
@@ -173,10 +174,9 @@ caServer = \"${TRAEFIK_ACME_CASERVER}\"
 entryPoint = \"https\"
   [acme.dnsChallenge]
     provider = \"${TRAEFIK_ACME_DNS_PROVIDER}\"
+    delayBeforeCheck = ${TRAEFIK_ACME_DNS_DELAY}
   [[acme.domains]]
     main = \"*.${TRAEFIK_ACME_DCOS_DOMAIN}\"
-  [[acme.domains]]
-    main = \"${TRAEFIK_ACME_DCOS_DOMAIN}\"
 "
 fi
 
